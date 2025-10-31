@@ -1,6 +1,10 @@
 from library_books import library_books
 from datetime import datetime, timedelta
 
+# main loop for user interaction
+def main():
+    User_inp = input(" Welcome to our Digital Library System. Please enter numbers 1-5 to select your desired operation: /n1.) View Available Books /n2.) Search Books /n3.) Checkout Book /n4.) Return Book /n5.) List Overdue Books/n 6.)View Top 3 Most Checked-out Books/n")
+
 # -------- Level 1 --------
 # TODO: Create a function to view all books that are currently available
 # Output should include book ID, title, and author
@@ -43,5 +47,5 @@ from datetime import datetime, timedelta
 # - Anything else you want to build on top of the system!
 
 if __name__ == "__main__":
-    # You can use this space to test your functions
+    main()
     pass
