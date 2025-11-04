@@ -1,0 +1,47 @@
+Basic PseudoCode
+
+load books from JSON file
+turn each book into a Book object
+store all books in a list called books_catalog
+
+while the user still wants to use the program:
+    print(UserInteractionMenu)
+    ask user for a number
+
+    if they pick "view books":
+        print only the books that are available
+
+    if they pick "search":
+        ask if searching by title, author, or genre
+        get search text
+        show any books that match the text
+
+    if they pick "checkout":
+        ask for a book ID
+        find that book
+        if it's available, mark it checked out and set due date
+
+    if they pick "return":
+        ask for a book ID
+        find that book
+        mark it available again (clear due date)
+
+    if they pick "overdue list":
+        look at all books that are checked out AND past their due date
+        show those
+
+    if they pick "top 3":
+        sort books by checkout count (biggest first)
+        print the first 3
+
+    if they pick "add a book":
+        figure out next book ID (find largest B#, add 1)
+        ask for title, author, genre
+        create a new Book object
+        add to books_catalog
+
+    if they pick "exit":
+        save all the books back into JSON file
+        stop loop
+
+End Program
