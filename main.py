@@ -200,7 +200,7 @@ def main():
                     book.checkout()
 
         elif User_inp == '4':
-            name = input("Enter the title of the book you want to checkout: ")
+            name = input("Enter the title of the book you want to return: ")
             for book in books_catalog:
                 if book.title.lower() == name.lower():
                     book.return_book()
