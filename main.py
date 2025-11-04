@@ -65,6 +65,24 @@ def load_books():
         books_catalog.append(Cbook)
     return books_catalog 
 
+def catalog_update(books_catalog):
+    book_name = input("Enter the title of the book to add: ")
+    author_name = input("Enter the author of the book: ")
+    genre_name = input("Enter the genre of the book: ")
+    
+    new_book = Book(
+        #using the length of the current catalog than adding one to create a unique ID for every book. 
+        id=len(books_catalog) + 1,
+        title=book_name,
+        author=author_name,
+        genre=genre_name,
+        available=True,
+        due_date=None,
+        checkouts=0
+    )
+    books_catalog.append(new_book)
+    print(f"{book_name} by {author_name} added to the catalog.")
+        
 #neccesary for saving the books after code is stopped or restarted.
 def save_books(books_catalog):
     data = []
@@ -123,7 +141,7 @@ def main():
     
     books_catalog = load_books()
     while True:
-        User_inp = input(" Welcome to our Digital Library System. Please enter numbers 1-7 to select your desired operation: \n1.) View Available Books \n2.) Search Books \n3.) Checkout Book \n4.) Return Book \n5.) List Overdue Books \n6.)View Top 3 Most Checked-out Books\n7.) Exit\nUser: ")
+        User_inp = input(" Welcome to our Digital Library System. Please enter numbers 1-8 to select your desired operation: \n1.) View Available Books \n2.) Search Books \n3.) Checkout Book \n4.) Return Book \n5.) List Overdue Books \n6.)View Top 3 Most Checked-out Books\n Add a book to catalog\n8.) Exit\nUser: ")
         if User_inp == '1':
             view_available_books(books_catalog)
         elif User_inp == '2':
@@ -137,11 +155,13 @@ def main():
         elif User_inp == '6':
             top_checked_out_books(books_catalog)
         elif User_inp == '7':
+            catalog_update(books_catalog)
+        elif User_inp == '8':
             save_books()
             print("Exiting the system. Goodbye!")
             break
         else:
-            print("Invalid input. Please enter a number between 1 and 7.")
+            print("Invalid input. Please enter a number between 1 and 8.")
 
 
 
