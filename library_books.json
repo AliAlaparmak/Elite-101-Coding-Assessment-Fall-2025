@@ -14,8 +14,8 @@
         "author": "Harper Lee",
         "genre": "Historical",
         "available": false,
-        "due_date": "2025-11-01",
-        "checkouts": 5
+        "due_date": "2025-12-09",
+        "checkouts": 6
     },
     {
         "id": "B3",
@@ -50,7 +50,7 @@
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
         "available": false,
-        "due_date": "2025-11-10",
+        "due_date": "2025-8-10",
         "checkouts": 8
     },
     {
@@ -75,6 +75,15 @@
         "id": "B9",
         "title": "The Brothers Karamazov",
         "author": "Fyodor Dostoevsky",
+        "genre": "Fiction",
+        "available": true,
+        "due_date": null,
+        "checkouts": 0
+    },
+    {
+        "id": "B10",
+        "title": "A",
+        "author": "Rick Riordan",
         "genre": "Fiction",
         "available": true,
         "due_date": null,

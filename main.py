@@ -6,17 +6,15 @@ import time
 # TODO: Convert your data into a Book class with methods like checkout() and return_book()
 # TODO: Add a simple menu that allows the user to choose different options like view, search, checkout, return, etc.
 
-# -------- Optional Advanced Features --------
-# You can implement these to move into Tier 4:
-# - Add a new book (via input) to the catalog
-# - Sort and display the top 3 most checked-out books
-# - Partial title/author search
-# - Save/load catalog to file (CSV or JSON)
-# - Anything else you want to build on top of the system!
+#                 README ADDITIONAL NOTES
+#The code loads all the data from the json file into a list of Book objects when the program starts, and saves any changes back to the json file when the program exits.
+#This way, any checkouts, returns, or new books added will persist between program runs.
+#I really enjoyed working on this project and actually learned a lot about working on bigger programs with multiple features that can interfere with each other.
+#One thing I would like to continue adding on is a UI as well as a log in system where indivdiual users can log in and have their own checkout history.
+
 
 #Converted my library book dictionary into a json file to allow me to save and laod data without losing it when the program stops running.
 #Used https://docs.python.org/3/library/json.html to help with json file handling and Data Saving and loading.
-
 class Book:
     def __init__(self, id, title, author, genre, available, due_date, checkouts):
         self.id = id
@@ -31,6 +29,7 @@ class Book:
     def checkout(self):
         if self.available:
             self.available = False
+            #https://www.w3schools.com/python/python_datetime.asp Used documenation, and help from Ai for help with handling dates.
             self.due_date = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
             self.checkouts += 1
             print(f"Book '{self.title}' checked out complete. Due date is {self.due_date}.")
@@ -79,6 +78,7 @@ def catalog_update(books_catalog):
     genre_name = input("Enter the genre of the book: ")
     
     new_book = Book(
+        #created unique Book ID's for each new book by adding 1 to the length of the catalog.
         id="B" + str(len(books_catalog) + 1),
         title=book_name,
         author=author_name,
@@ -112,6 +112,7 @@ def save_books(books_catalog):
 
 #Operation 6
 def top_checked_out_books(books_catalog):
+    #https://www.w3schools.com/python/ref_func_sorted.asp   Had a lot of help from code snippets as well as AI on how to use the sorted function with lambda to sort my books by checkouts.
     sorted_books = sorted(books_catalog, key=lambda b: b.checkouts, reverse=True)
     top_three = sorted_books[:3]
     print("\nTop 3 Most Checked-Out Books:")
@@ -162,9 +163,9 @@ def list_overdue_books(books_catalog):
     overdue_list = []
     print("\nOverdue Books:")
     time.sleep(0.5); print()
-    
     for book in books_catalog:
         if book.due_date is not None:
+            #also used help from https://www.w3schools.com/python/python_datetime.asp to help with date comparisons.
             due_date = datetime.strptime(book.due_date, "%Y-%m-%d")
             if due_date < current_date:
                 overdue_list.append(book.title)
